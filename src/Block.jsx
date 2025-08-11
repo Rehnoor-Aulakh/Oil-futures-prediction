@@ -106,7 +106,7 @@ export default function Block() {
   return (
     <div className="flex flex-col items-center w-full">
       {/* Price Display Block */}
-      <div className="bg-cyan-600 h-64 m-16 w-4/5 rounded-lg p-5">
+      <div className="bg-cyan-600 h-64 m-16 w-4/5 rounded-lg p-5 h-auto">
         <div className="text-cyan-100 text-lg">
           <h1 className="py-2">Hourly Forecast</h1>
           <p
@@ -126,6 +126,15 @@ export default function Block() {
             <span>{formatPercentChange(actualPercentChange)} now</span>
             <br />
             <span className="font-normal text-sm">{getDate()}</span>
+          </p>
+          <p
+            className={`${
+              actualPercentChange - predictedPercentChange < 0
+                ? "text-[#ed0000]"
+                : "text-[#00ff00]"
+            }  font-extrabold my-3`}
+          >
+            gap: {(actualPercentChange - predictedPercentChange).toFixed(2)}
           </p>
         </div>
       </div>
